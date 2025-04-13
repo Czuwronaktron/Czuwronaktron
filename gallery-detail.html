@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Powiększony obrazek - Czuwronaktron</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Audiowide&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --gold: #FFD700;
+      --turquoise: #40E0D0;
+      --dark-bg: #070721;
+      --metallic-bg: #1A1A1A;
+      --semi-transparent: rgba(0,0,0,0.6);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--metallic-bg);
+      color: chartreuse;
+      overflow-x: hidden;
+      position: relative;
+      
+      background: #000 url("files/main.webp") no-repeat center center fixed;
+      background-size: cover;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+      text-align: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(45deg, var(--turquoise), var(--gold));
+      color: #000;
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      text-decoration: none;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(255,215,0,0.8);
+    }
+    #detail-image {
+      max-width: 90vw;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 0 20px var(--turquoise);
+      margin: 1rem auto;
+      display: block;
+    }
+    #detail-description {
+        background-color: black;
+        border-radius: 10px;
+        color: #0f8f48;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html#galeria" class="btn"><i class="fas fa-arrow-left"></i> Powrót do galerii</a>
+    <img id="detail-image" src="" alt="Powiększony obrazek">
+    <div id="detail-description"></div>
+  </div>
+  <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const imgSrc = urlParams.get('img');
+    const description = urlParams.get('desc');
+
+    if (imgSrc) {
+      document.getElementById('detail-image').src = imgSrc;
+    }
+    if (description) {
+      document.getElementById('detail-description').textContent = decodeURIComponent(description);
+    }
+  </script>
+</body>
+</html>
